@@ -13,6 +13,10 @@ public class Persona {
 		this.nombre = nombre;
 	}
 	
+	public Persona(String nombre) {
+		this.nombre = nombre;
+	}
+	
 	public Persona() {
 	}
 
