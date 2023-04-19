@@ -27,6 +27,7 @@ public class Main {
 		Equipo jugador1EquipoPronosticoPolonia = new Equipo("Polonia");
 		Equipo jugador1EquipoPronosticoMexico = new Equipo("Mexico");
 		
+		cuandoUnaPersonaTieneUnPronostico(jugador1, jugador1Pronostico);
 		cuandoAgregoLaRondaEnLaPosicionCeroAlPronostico(jugador1Pronostico,jugador1RondaPronostico);
 		cuandoAgregoElPartidoEnLaPosicionCeroDeLaRonda(jugador1RondaPronostico, jugador1PartidoPronosticoArabiaSauditaVsArgentina);
 		cuandoAgregoElPartidoEnLaPosicionUnoDeLaRonda(jugador1RondaPronostico,jugador1PartidoPronosticoMexicoVsPolonia);
@@ -51,6 +52,7 @@ public class Main {
 		Equipo jugador2EquipoPronosticoPolonia = new Equipo("Polonia");
 		Equipo jugador2EquipoPronosticoMexico = new Equipo("Mexico");
 		
+		cuandoUnaPersonaTieneUnPronostico(jugador2, jugador2Pronostico);
 		cuandoAgregoLaRondaEnLaPosicionCeroAlPronostico(jugador2Pronostico,jugador2RondaPronostico);
 		cuandoAgregoElPartidoEnLaPosicionCeroDeLaRonda(jugador2RondaPronostico, jugador2PartidoPronosticoArabiaSauditaVsArgentina);
 		cuandoAgregoElPartidoEnLaPosicionUnoDeLaRonda(jugador2RondaPronostico,jugador2PartidoPronosticoMexicoVsPolonia);
@@ -81,7 +83,49 @@ public class Main {
 		cuandoGuardoLosEquiposEnElPartido(partidoResultadoMexicoVsPolonia,equipoResultadoMexico , equipoResultadoPolonia);
 		cuandoUnPartidoLeOtorgoUnResultado(partidoResultadoMexicoVsPolonia, 0,0);
 		cuandoLeAsignoUnResultadoElEquipo(partidoResultadoMexicoVsPolonia, equipoResultadoMexico, RESULTADO.EMPATE);
+		
+		//CUANDO ACTUALIZO EL PUNTAJE DEL JUGADOR 1
+		cuandoLaPersonaActualizaSuPuntajeEnBaseAlResultado(jugador1, jugador1PartidoPronosticoArabiaSauditaVsArgentina, partidoResultadoArabiaSauditaVsArgentina);
+		cuandoLaPersonaActualizaSuPuntajeEnBaseAlResultado(jugador1, jugador1PartidoPronosticoMexicoVsPolonia,partidoResultadoMexicoVsPolonia);
 
+		//CUANDO ACTUALIZO EL PUNTAJE DEL JUGADOR 2
+		cuandoLaPersonaActualizaSuPuntajeEnBaseAlResultado(jugador2, jugador2PartidoPronosticoArabiaSauditaVsArgentina, partidoResultadoArabiaSauditaVsArgentina);
+		cuandoLaPersonaActualizaSuPuntajeEnBaseAlResultado(jugador2, jugador2PartidoPronosticoMexicoVsPolonia,partidoResultadoMexicoVsPolonia);
+		
+		System.out.println("----------------------------------");
+		System.out.println("Bienvenidos al Pronostico Deportivo");
+		System.out.println("Jugadores que participan: ");
+		System.out.println("Jugador 1: "+jugador1.getNombre());
+		System.out.println("Jugador 2: "+jugador2.getNombre());
+		System.out.println("----------------------------------");
+		
+		System.out.println("Pronosticos del jugador 1: ");
+		System.out.println("Partido Arabia Saudita vs Argentina: "+ jugador1EquipoPronosticoArabiaSaudita.getNombre()+" es: "+jugador1.getPronostico().getRondas().get(0).getPartidos().get(0).getResultadoEquipoUno());
+		System.out.println("Partido Mexico vs Polonia: "+ jugador1EquipoPronosticoMexico.getNombre()+" es: "+ jugador1.getPronostico().getRondas().get(0).getPartidos().get(1).getResultadoEquipoUno());
+		System.out.println("----------------------------------");
+		System.out.println("Pronosticos del jugador 2: ");
+		System.out.println("Partido Arabia Saudita vs Argentina: "+ jugador2EquipoPronosticoArabiaSaudita.getNombre()+" es: "+ jugador2.getPronostico().getRondas().get(0).getPartidos().get(0).getResultadoEquipoUno());
+		System.out.println("Partido Mexico vs Polonia: "+ jugador2EquipoPronosticoMexico.getNombre()+" es: "+jugador2.getPronostico().getRondas().get(0).getPartidos().get(1).getResultadoEquipoUno());
+		System.out.println("----------------------------------");
+		
+		System.out.println("Resultados de los partidos de la ronda: ");
+		System.out.println("Partido: "+equipoResultadoArabiaSaudita.getNombre()+": "+partidoResultadoArabiaSauditaVsArgentina.getGolesEquipoUno()+" vs "+equipoResultadoArgentina.getNombre()+": "+partidoResultadoArabiaSauditaVsArgentina.getGolesEquipoDos());
+		System.out.println("Partido: "+equipoResultadoMexico.getNombre()+": "+partidoResultadoMexicoVsPolonia.getGolesEquipoUno()+" vs "+equipoResultadoPolonia.getNombre()+": "+partidoResultadoMexicoVsPolonia.getGolesEquipoDos());
+		System.out.println("----------------------------------");
+		
+		System.out.println("Puntaje de los jugadores: ");
+		System.out.println("Jugador 1: "+ jugador1.getNombre()+"--Puntaje: "+ jugador1.getPuntaje());
+		System.out.println("Jugador 2: "+ jugador2.getNombre()+"--Puntaje: "+ jugador2.getPuntaje());
+	}
+	
+	private static void cuandoUnaPersonaTieneUnPronostico(Persona persona, Pronostico pronostico) {	
+		persona.setPronostico(pronostico);	
+	}
+	
+	private static void cuandoLaPersonaActualizaSuPuntajeEnBaseAlResultado(Persona persona,
+			Partido partidoPronostico, Partido partidoResultado) {
+		persona.actualizarPuntaje(partidoPronostico, partidoResultado);
+		
 	}
 	
 	private static void cuandoAgregoElPartidoEnLaPosicionUnoDeLaRonda(Ronda ronda, Partido partido) {

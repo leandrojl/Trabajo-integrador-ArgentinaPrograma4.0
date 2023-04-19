@@ -2,7 +2,7 @@ package ar.com.UTNArgentinaPrograma.Clases;
 
 public class Persona {
 	
-	private Pronostico pronostico=null;
+	private Pronostico pronostico;
 	String nombre;
 	Integer puntaje=0;
 	
